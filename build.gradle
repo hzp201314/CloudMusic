@@ -1,0 +1,68 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+//引入根工程下的统一版本管理文件
+//apply from: file('cloudmusic.gradle')//引入当前文件夹下同级目录文件
+apply from: this.rootProject.file('cloudmusic.gradle')//从根文件夹下查找
+
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven {
+            url 'http://localhost:8081/repository/cloudmusic-release/'
+            credentials {
+                username 'admin'
+                password 'a89330177'
+            }
+        }
+        maven {
+            url 'http://localhost:8081/repository/cloudmusic-snapshot/'
+            credentials {
+                username 'admin'
+                password 'a89330177'
+            }
+        }
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.6.3'
+
+        //greendao插件依赖
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
+        //ARouter插件依赖
+//        classpath "com.alibaba:arouter-register:1.0.2"
+
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven {
+            url 'http://localhost:8081/repository/cloudmusic-release/'
+            credentials {
+                username 'admin'
+                password 'a89330177'
+            }
+        }
+        maven {
+            url 'http://localhost:8081/repository/cloudmusic-snapshot/'
+            credentials {
+                username 'admin'
+                password 'a89330177'
+            }
+        }
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
